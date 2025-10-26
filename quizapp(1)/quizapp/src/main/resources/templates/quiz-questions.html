@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title th:text="${quiz.quizname}">Quiz Questions</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .question { border: 1px solid #ccc; padding: 10px; margin-bottom: 15px; }
+        .submit-btn { padding: 8px 16px; font-size: 16px; }
+    </style>
+</head>
+<body>
+    <h2 th:text="${quiz.quizname}">Quiz Title</h2>
+    <p th:text="${quiz.description}">Quiz Description</p>
+
+    <!-- Quiz Form -->
+    <form th:action="@{'/quiz/' + ${quiz.id} + '/submit'}" method="post">
+        <div th:each="question : ${questions}" class="question">
+            <p th:text="${question.content}">Question text</p>
+            
+            <ul style="list-style: none; padding-left: 0;">
+                <li>
+                    <input type="radio" th:name="${question.id}" th:value="${question.optionA}" required />
+                    <span th:text="${question.optionA}">Option A</span>
+                </li>
+                <li>
+                    <input type="radio" th:name="${question.id}" th:value="${question.optionB}" required />
+                    <span th:text="${question.optionB}">Option B</span>
+                </li>
+                <li>
+                    <input type="radio" th:name="${question.id}" th:value="${question.optionC}" required />
+                    <span th:text="${question.optionC}">Option C</span>
+                </li>
+                <li>
+                    <input type="radio" th:name="${question.id}" th:value="${question.optionD}" required />
+                    <span th:text="${question.optionD}">Option D</span>
+                </li>
+            </ul>
+        </div>
+
+        <button type="submit" class="submit-btn">Submit Quiz</button>
+    </form>
+
+    <a th:href="@{/home}">Back to Home</a>
+</body>
+</html>

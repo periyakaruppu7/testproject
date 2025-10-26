@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Home</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .quiz { border: 1px solid #ccc; padding: 10px; margin-bottom: 15px; }
+        a { text-decoration: none; color: blue; }
+    </style>
+</head>
+<body>
+    <h2>Welcome Home!</h2>
+    <p>You are successfully logged in.</p>
+
+    <h3>All Quizzes</h3>
+    <div th:each="quiz : ${quizzes}" class="quiz">
+        <h4 th:text="${quiz.quizname}">Quiz Title</h4>
+        <p th:text="${quiz.description}">Quiz Description</p>
+        <a th:href="@{'/quiz/' + ${quiz.id}}">Start Quiz</a>
+    </div>
+
+    <a th:href="@{/login}">Logout</a>
+</body>
+</html>

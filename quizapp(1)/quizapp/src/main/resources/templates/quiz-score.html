@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Quiz Score</title>
+    <style>
+        body { font-family: Arial; padding: 20px; }
+        .score { border: 1px solid #ccc; padding: 15px; width: 300px; margin-top: 20px; }
+    </style>
+</head>
+<body>
+    <h2 th:text="'Quiz: ' + ${quiz.quizname}">Quiz Name</h2>
+
+    <div class="score">
+        <p th:text="'Your Score: ' + ${score} + ' / ' + ${total}">Your Score</p>
+    </div>
+
+    <a th:href="@{/home}">Back to Home</a>
+</body>
+</html>
